@@ -9,6 +9,6 @@ public class ShopAppITest {
     public void testShopAppExample() {
         ShopApp shopApp = new ShopApp();
         double totalCost = shopApp.calculateCostExample();
-        assertEquals(totalCost, 2.05, 0.001, "Total cost should be £2.05");
+        assertEquals(totalCost, 1.45, 0.001, "Total cost should be £1.45");
     }
 }

@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.codermages.shopapp.model.Basket;
 import com.codermages.shopapp.model.CurrencyType;
+import com.codermages.shopapp.model.Offer;
 import com.codermages.shopapp.service.BasketBuilder;
 import com.codermages.shopapp.service.CostCalculator;
+import com.codermages.shopapp.service.OfferService;
 
 public class ShopApp {
 
@@ -17,7 +19,9 @@ public class ShopApp {
 
         try {
             Basket basket = basketBuilder.build(items);
-            totalCost = costCalculator.calculateTotalCost(basket, CurrencyType.GBP);
+            List<Offer> currentOffers = new OfferService().getCurrentOffers();
+
+            totalCost = costCalculator.calculateTotalCost(basket, currentOffers, CurrencyType.GBP);
 
             System.out.printf("Total cost: £%.2f%n", totalCost);
         } catch (IllegalArgumentException e) {
